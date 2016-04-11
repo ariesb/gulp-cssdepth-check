@@ -1,0 +1,41 @@
+{
+  "name": "gulp-cssdepth-check",
+  "version": "0.1.0",
+  "description": "VGulp plugin to check for maximum CSS depth",
+  "license": "MIT",
+  "repository": "ariesb/gulp-cssdepth-check",
+  "author": {
+    "name": "Aries Beltran",
+    "email": "ariesbe@icloud.com",
+    "url": "http://github.com/ariesb"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "css",
+    "sass",
+    "errors",
+    "check",
+    "lint",
+    "parse"
+  ],
+  "dependencies": {
+    "cli-table2": "^0.2.0",
+    "css-parse": "^2.0.0",
+    "gulp-util": "^3.0.0",
+    "jsonfile": "^2.2.3",
+    "mkdirp": "^0.5.1",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
