@@ -9,6 +9,13 @@ var fs = require('fs');
 module.exports = function (opts) {
 	opts = opts || {};
 
+	// defaults
+	opts.depthAllowed = opts.depthAllowed || 3;
+	opts.showStats = opts.showStats || true;
+	opts.showSelectors = opts.showSelectors || false;
+	opts.throwError = opts.throwError || false;
+
+
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
 			cb(null, file);
