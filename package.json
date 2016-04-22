@@ -1,7 +1,8 @@
 {
   "name": "gulp-cssdepth-check",
-  "version": "0.1.0",
-  "description": "VGulp plugin to check for maximum CSS depth",
+  "version": "0.2.0",
+  "description": "Gulp plugin to check for maximum CSS depth",
+  "main": "index.js",
   "license": "MIT",
   "repository": "ariesb/gulp-cssdepth-check",
   "author": {

@@ -61,9 +61,14 @@ module.exports = function (opts) {
 			});
 
 			// log to json file if needed
+			var __prevStats = null;
 			if(opts.logFolder){
 				_s.file = path.basename(file.path);
 				var _logfile = opts.logFolder + '/' + _s.file + '-check.json'
+
+				if (fs.existsSync(_logfile)){
+					__prevStats = jsonfile.readFileSync(_logfile);
+				}
 
 				if (!fs.existsSync(opts.logFolder)){
 					var mkdirp = require('mkdirp');
@@ -79,9 +84,9 @@ module.exports = function (opts) {
 				gutil.log('CSS Depth Check Report for', _s.file);
 
 				var Table = require('cli-table2');
-				var aligns = ['left', 'right'];
+				var aligns = ['left', 'right', 'right', 'right'];
 				if(opts.showStats){
-					var headers = ['Selector Depth', 'Instances'];
+					var headers = ['Selector Depth', 'Instances', 'Previous', 'Change'];
 					if(opts.showSelectors) {
 						headers.push('Selectors');
 					}
@@ -91,6 +96,20 @@ module.exports = function (opts) {
 					for (var key in _s.errors) {
 						if (_s.errors.hasOwnProperty(key)) {
 							var _item = [key, _s.errors[key].count];
+
+							if(__prevStats !== null) {
+								var _last = __prevStats.errors[key];
+								if(!_last) {
+									_item.push('N/A');
+									_item.push('N/A');
+								} else {
+									_item.push(_last.count);
+									_item.push( (((_s.errors[key].count - _last.count) / _last.count) * 100) + '%' );
+								}
+							} else {
+								_item.push('N/A');
+								_item.push('N/A');
+							}
 
 							if(opts.showSelectors) {
 								_item.push(_s.errors[key].selectors.join('\n'));
