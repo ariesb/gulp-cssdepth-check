@@ -104,7 +104,8 @@ module.exports = function (opts) {
 									_item.push('N/A');
 								} else {
 									_item.push(_last.count);
-									_item.push( (((_s.errors[key].count - _last.count) / _last.count) * 100) + '%' );
+									var _change = (((_s.errors[key].count - _last.count) / _last.count) * 100);
+									_item.push(  (Math.round(_change * 100) / 100)+ '%' );
 								}
 							} else {
 								_item.push('N/A');
