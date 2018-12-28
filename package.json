@@ -38,5 +38,11 @@
   },
   "devDependencies": {
     "mocha": "*"
-  }
+  },
+  "contributors": [
+    {
+      "name": "DanielRuf",
+      "url": "https://github.com/DanielRuf"
+    }
+  ]
 }
