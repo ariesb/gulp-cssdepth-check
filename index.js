@@ -83,7 +83,7 @@ module.exports = function (opts) {
 			if(opts.showStats || opts.showSelectors) {
 				gutil.log('CSS Depth Check Report for', _s.file);
 
-				var Table = require('cli-table2');
+				var Table = require('cli-table3');
 				var aligns = ['left', 'right', 'right', 'right'];
 				if(opts.showStats){
 					var headers = ['Selector Depth', 'Instances', 'Previous', 'Change'];
